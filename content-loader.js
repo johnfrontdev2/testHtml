@@ -113,7 +113,6 @@ class ContentLoader {
             benefitElement.textContent = doctorData.acf[benefit];
           }
         });
-        }
       }
     } catch (error) {
       console.error('Erro ao carregar informações do médico:', error);
