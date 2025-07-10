@@ -90,6 +90,12 @@ class WordPressAPI {
     return page;
   }
 
+  // Buscar configurações gerais do site
+  async getSiteSettings() {
+    const page = await this.getPage(WORDPRESS_CONFIG.pageIds.settings);
+    return page;
+  }
+
   // Buscar estatísticas (campos personalizados)
   async getStatistics() {
     // Você pode criar uma página específica para estatísticas

@@ -24,13 +24,13 @@
     <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6 lg:px-8">
       <h1 class="doctor-name text-2xl font-semibold tracking-tight" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;">Dr. João da Silva</h1>
       <nav class="hidden md:flex gap-8 text-sm" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;animation-delay:.1s">
-        <a href="#sobre" class="hover:text-emerald-600 transition">Sobre</a>
-        <a href="#procedimentos" class="hover:text-emerald-600 transition">Procedimentos</a>
-        <a href="#estatisticas" class="hover:text-emerald-600 transition">Resultados</a>
-        <a href="#contato" class="hover:text-emerald-600 transition">Contato</a>
+        <a href="#sobre" class="nav-sobre hover:text-emerald-600 transition">Sobre</a>
+        <a href="#procedimentos" class="nav-procedimentos hover:text-emerald-600 transition">Procedimentos</a>
+        <a href="#estatisticas" class="nav-estatisticas hover:text-emerald-600 transition">Resultados</a>
+        <a href="#contato" class="nav-contato hover:text-emerald-600 transition">Contato</a>
       </nav>
-      <a href="#contato" class="hidden md:inline-flex items-center gap-1 px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition text-sm" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;animation-delay:.2s">
-        <i data-lucide="calendar"></i> Consulta
+      <a href="#contato" class="nav-consulta hidden md:inline-flex items-center gap-1 px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition text-sm" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;animation-delay:.2s">
+        <i data-lucide="calendar"></i> <span>Consulta</span>
       </a>
       <button class="md:hidden" id="menuBtn" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;animation-delay:.3s">
         <i data-lucide="menu"></i>
@@ -38,10 +38,10 @@
     </div>
     <!-- Mobile -->
     <div id="mobileMenu" class="md:hidden px-6 pb-4 space-y-2 hidden">
-      <a href="#sobre" class="block py-2 border-b">Sobre</a>
-      <a href="#procedimentos" class="block py-2 border-b">Procedimentos</a>
-      <a href="#estatisticas" class="block py-2 border-b">Resultados</a>
-      <a href="#contato" class="block py-2">Contato</a>
+      <a href="#sobre" class="nav-sobre block py-2 border-b">Sobre</a>
+      <a href="#procedimentos" class="nav-procedimentos block py-2 border-b">Procedimentos</a>
+      <a href="#estatisticas" class="nav-estatisticas block py-2 border-b">Resultados</a>
+      <a href="#contato" class="nav-contato block py-2">Contato</a>
     </div>
   </header>
 
@@ -53,8 +53,8 @@
         <h2 class="hero-title text-4xl md:text-5xl font-semibold tracking-tight mb-4">Excelência em Cirurgia Geral</h2>
         <p class="hero-subtitle text-gray-600 mb-8 max-w-lg">Com mais de 20 anos de experiência, o Dr. João da Silva é referência nacional em procedimentos minimamente invasivos e técnicas de última geração.</p>
         <div class="flex gap-4">
-          <a href="#contato" class="px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition">Agendar Consulta</a>
-          <a href="#sobre" class="px-6 py-3 border border-gray-300 rounded-md hover:bg-gray-100 transition">Ver Curriculum</a>
+          <a href="#contato" class="btn-consulta px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition">Agendar Consulta</a>
+          <a href="#sobre" class="btn-curriculum px-6 py-3 border border-gray-300 rounded-md hover:bg-gray-100 transition">Ver Curriculum</a>
         </div>
       </div>
       <!-- Foto -->
@@ -68,22 +68,22 @@
   <section id="sobre" class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
-        <h3 class="text-3xl font-semibold tracking-tight mb-4">Formação & Princípios</h3>
+        <h3 class="about-title text-3xl font-semibold tracking-tight mb-4">Formação & Princípios</h3>
         <div class="doctor-bio text-gray-600 mb-6">
           <p>Graduado pela Universidade de Brasília e com residência em Cirurgia Geral pelo Hospital Sírio-Libanês, Dr. João soma milhares de procedimentos realizados com foco na segurança e bem-estar do paciente.</p>
         </div>
         <ul class="space-y-3">
           <li class="flex items-center gap-2">
             <i data-lucide="check-circle" class="text-emerald-600"></i>
-            <span>Tecnologia de ponta em todas as etapas</span>
+            <span class="benefit-1">Tecnologia de ponta em todas as etapas</span>
           </li>
           <li class="flex items-center gap-2">
             <i data-lucide="check-circle" class="text-emerald-600"></i>
-            <span>Equipe multidisciplinar dedicada</span>
+            <span class="benefit-2">Equipe multidisciplinar dedicada</span>
           </li>
           <li class="flex items-center gap-2">
             <i data-lucide="check-circle" class="text-emerald-600"></i>
-            <span>Taxas de sucesso reconhecidas nacionalmente</span>
+            <span class="benefit-3">Taxas de sucesso reconhecidas nacionalmente</span>
           </li>
         </ul>
       </div>
@@ -97,7 +97,7 @@
   <!-- PROCEDIMENTOS -->
   <section id="procedimentos" class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <h3 class="text-3xl font-semibold tracking-tight text-center mb-12">Principais Procedimentos</h3>
+      <h3 class="procedures-title text-3xl font-semibold tracking-tight text-center mb-12">Principais Procedimentos</h3>
       <div class="procedures-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card -->
         <div class="bg-gray-50 rounded-lg p-6 border hover:shadow-lg transition" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
@@ -125,16 +125,16 @@
   <section id="estatisticas" class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
-        <h3 class="text-3xl font-semibold tracking-tight mb-4">Resultados Comprovados</h3>
-        <p class="text-gray-600 mb-6">Acompanhe a evolução do número de cirurgias realizadas nos últimos anos, fruto de dedicação à excelência e à confiança de pacientes de todo o país.</p>
+        <h3 class="stats-title text-3xl font-semibold tracking-tight mb-4">Resultados Comprovados</h3>
+        <p class="stats-description text-gray-600 mb-6">Acompanhe a evolução do número de cirurgias realizadas nos últimos anos, fruto de dedicação à excelência e à confiança de pacientes de todo o país.</p>
         <div class="flex gap-8">
           <div>
             <p class="satisfaction-stat text-4xl font-semibold text-emerald-600">98%</p>
-            <span class="text-gray-600 text-sm">Satisfação</span>
+            <span class="satisfaction-label text-gray-600 text-sm">Satisfação</span>
           </div>
           <div>
             <p class="procedures-stat text-4xl font-semibold text-emerald-600">+10k</p>
-            <span class="text-gray-600 text-sm">Procedimentos</span>
+            <span class="procedures-label text-gray-600 text-sm">Procedimentos</span>
           </div>
         </div>
       </div>
@@ -149,7 +149,7 @@
   <!-- TESTEMUNHOS -->
   <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <h3 class="text-3xl font-semibold tracking-tight text-center mb-12">Depoimentos</h3>
+      <h3 class="testimonials-title text-3xl font-semibold tracking-tight text-center mb-12">Depoimentos</h3>
       <div class="testimonials-grid grid md:grid-cols-3 gap-8">
         <blockquote class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
           <p class="text-gray-600 mb-4">"Equipe impecável! Minha recuperação foi surpreendentemente rápida e tranquila."</p>
@@ -181,20 +181,20 @@
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <!-- Form -->
       <form id="contactForm" class="bg-white p-8 rounded-lg border shadow-sm space-y-6" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
-        <h3 class="text-2xl font-semibold tracking-tight mb-2">Agende sua consulta</h3>
+        <h3 class="contact-title text-2xl font-semibold tracking-tight mb-2">Agende sua consulta</h3>
         <div>
-          <label class="block text-sm mb-1">Nome</label>
+          <label class="name-label block text-sm mb-1">Nome</label>
           <input type="text" name="name" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Seu nome">
         </div>
         <div>
-          <label class="block text-sm mb-1">E-mail</label>
+          <label class="email-label block text-sm mb-1">E-mail</label>
           <input type="email" name="email" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="voce@email.com">
         </div>
         <div>
-          <label class="block text-sm mb-1">Mensagem</label>
+          <label class="message-label block text-sm mb-1">Mensagem</label>
           <textarea name="message" rows="4" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Como podemos ajudar?"></textarea>
         </div>
-        <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition flex justify-center gap-2">
+        <button type="submit" class="submit-btn w-full py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition flex justify-center gap-2">
           <i data-lucide="send"></i> Enviar
         </button>
       </form>
@@ -222,7 +222,7 @@
   <!-- FOOTER -->
   <footer class="bg-gray-100 py-8">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-gray-600">© <span id="year"></span> Dr. João da Silva – Todos os direitos reservados.</p>
+      <p class="copyright-text text-sm text-gray-600">© <span id="year"></span> Dr. João da Silva – Todos os direitos reservados.</p>
       <div class="flex gap-4 text-gray-500">
         <a href="#" class="hover:text-emerald-600 transition"><i data-lucide="instagram"></i></a>
         <a href="#" class="hover:text-emerald-600 transition"><i data-lucide="linkedin"></i></a>

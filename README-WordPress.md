@@ -25,6 +25,7 @@ Crie as seguintes páginas no WordPress Admin:
 - **Procedimentos** (Procedures)
 - **Contato** (Contact)
 - **Estatísticas** (Statistics)
+- **Configurações Gerais** (Settings)
 
 Anote os IDs dessas páginas e atualize em `config.js`:
 ```javascript
@@ -33,7 +34,8 @@ pageIds: {
   about: 2,       // ID da página "Sobre"
   procedures: 3,  // ID da página "Procedimentos"
   contact: 4,     // ID da página "Contato"
-  testimonials: 5 // ID da página "Depoimentos"
+  testimonials: 5, // ID da página "Depoimentos"
+  settings: 6     // ID da página "Configurações Gerais"
 }
 ```
 
@@ -44,20 +46,44 @@ Crie as seguintes categorias no WordPress:
 
 ### 4. Configurar Campos Personalizados (ACF)
 
+#### Para a Página de Configurações Gerais (Settings):
+- `site_title` (Texto) - Título do site (ex: "Dr. João da Silva")
+- `site_subtitle` (Texto) - Subtítulo do site (ex: "Cirurgião Geral em Brasília")
+- `copyright_text` (Texto) - Texto do copyright (use {year} para ano atual)
+- `nav_sobre_text` (Texto) - Texto do link "Sobre"
+- `nav_procedimentos_text` (Texto) - Texto do link "Procedimentos"
+- `nav_estatisticas_text` (Texto) - Texto do link "Resultados"
+- `nav_contato_text` (Texto) - Texto do link "Contato"
+- `nav_consulta_text` (Texto) - Texto do botão "Consulta"
+
 #### Para a Página Inicial (Home):
 - `hero_title` (Texto) - Título principal
 - `hero_subtitle` (Textarea) - Subtítulo
 - `hero_image` (Imagem) - Imagem do hero
+- `hero_image_alt` (Texto) - Texto alternativo da imagem
+- `btn_consulta_text` (Texto) - Texto do botão "Agendar Consulta"
+- `btn_curriculum_text` (Texto) - Texto do botão "Ver Curriculum"
 
 #### Para a Página Sobre (About):
+- `about_title` (Texto) - Título da seção "Sobre"
 - `doctor_name` (Texto) - Nome do médico
 - `doctor_photo` (Imagem) - Foto do médico
+- `doctor_photo_alt` (Texto) - Texto alternativo da foto
+- `benefit_1` (Texto) - Primeiro benefício
+- `benefit_2` (Texto) - Segundo benefício
+- `benefit_3` (Texto) - Terceiro benefício
 - Conteúdo principal vai no editor padrão do WordPress
+
+#### Para a Página de Procedimentos:
+- `procedures_title` (Texto) - Título da seção "Procedimentos"
 
 #### Para Posts de Procedimentos:
 - `icon` (Texto) - Nome do ícone Lucide (ex: "scalpel", "heart-pulse")
 - Título: usar o título padrão do post
 - Descrição: usar o conteúdo ou excerpt do post
+
+#### Para a Página de Depoimentos:
+- `testimonials_title` (Texto) - Título da seção "Depoimentos"
 
 #### Para Posts de Depoimentos:
 - `author_name` (Texto) - Nome do autor do depoimento
@@ -65,13 +91,25 @@ Crie as seguintes categorias no WordPress:
 - Conteúdo: usar o conteúdo padrão do post
 
 #### Para a Página de Estatísticas:
+- `stats_title` (Texto) - Título da seção "Estatísticas"
+- `stats_description` (Textarea) - Descrição da seção
 - `satisfaction_rate` (Número) - Taxa de satisfação (ex: 98)
+- `satisfaction_label` (Texto) - Label da satisfação (ex: "Satisfação")
 - `total_procedures` (Texto) - Total de procedimentos (ex: "10k")
+- `procedures_label` (Texto) - Label dos procedimentos (ex: "Procedimentos")
 - `chart_data` (Grupo de campos):
   - `labels` (Texto) - Labels do gráfico separados por vírgula
   - `data` (Texto) - Dados do gráfico separados por vírgula
 
 #### Para a Página de Contato:
+- `contact_title` (Texto) - Título do formulário
+- `name_label` (Texto) - Label do campo nome
+- `email_label` (Texto) - Label do campo email
+- `message_label` (Texto) - Label do campo mensagem
+- `name_placeholder` (Texto) - Placeholder do campo nome
+- `email_placeholder` (Texto) - Placeholder do campo email
+- `message_placeholder` (Texto) - Placeholder do campo mensagem
+- `submit_btn_text` (Texto) - Texto do botão de envio
 - `address` (Texto) - Endereço
 - `phone` (Texto) - Telefone
 - `email` (Email) - Email de contato
@@ -162,6 +200,7 @@ add_filter('rest_prepare_page', function($response, $post, $request) {
 
 ## 📱 Funcionalidades Implementadas
 
+- ✅ **100% dos textos dinâmicos** - Tudo editável via ACF
 - ✅ Carregamento dinâmico de conteúdo
 - ✅ Cache automático (5 minutos)
 - ✅ Formulário de contato integrado
@@ -174,10 +213,13 @@ add_filter('rest_prepare_page', function($response, $post, $request) {
 ## 🔄 Atualizações de Conteúdo
 
 Após configurar tudo, você poderá:
+- **Editar TODOS os textos** do site via WordPress Admin
 - Editar conteúdo diretamente no WordPress Admin
 - Adicionar novos procedimentos como posts
 - Gerenciar depoimentos
 - Atualizar informações de contato
 - Modificar estatísticas e gráficos
+- Alterar textos da navegação e footer
+- Personalizar labels e placeholders do formulário
 
 O site será atualizado automaticamente conforme você edita o conteúdo no WordPress!
