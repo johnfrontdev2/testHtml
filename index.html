@@ -11,10 +11,18 @@
 </head>
 
 <body class="font-sans text-gray-800 bg-gray-50">
+  <!-- LOADING -->
+  <div id="loading" class="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="text-center">
+      <i data-lucide="loader-2" class="w-8 h-8 text-emerald-600 animate-spin mx-auto mb-2"></i>
+      <p class="text-gray-600">Carregando conteúdo...</p>
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <header class="w-full bg-white/70 backdrop-blur-md border-b border-gray-200">
     <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6 lg:px-8">
-      <h1 class="text-2xl font-semibold tracking-tight" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;">Dr. João da Silva</h1>
+      <h1 class="doctor-name text-2xl font-semibold tracking-tight" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;">Dr. João da Silva</h1>
       <nav class="hidden md:flex gap-8 text-sm" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;animation-delay:.1s">
         <a href="#sobre" class="hover:text-emerald-600 transition">Sobre</a>
         <a href="#procedimentos" class="hover:text-emerald-600 transition">Procedimentos</a>
@@ -42,8 +50,8 @@
     <div class="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12 py-24">
       <!-- Texto -->
       <div class="flex-1" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;animation-delay:.2s">
-        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4">Excelência em Cirurgia Geral</h2>
-        <p class="text-gray-600 mb-8 max-w-lg">Com mais de 20 anos de experiência, o Dr. João da Silva é referência nacional em procedimentos minimamente invasivos e técnicas de última geração.</p>
+        <h2 class="hero-title text-4xl md:text-5xl font-semibold tracking-tight mb-4">Excelência em Cirurgia Geral</h2>
+        <p class="hero-subtitle text-gray-600 mb-8 max-w-lg">Com mais de 20 anos de experiência, o Dr. João da Silva é referência nacional em procedimentos minimamente invasivos e técnicas de última geração.</p>
         <div class="flex gap-4">
           <a href="#contato" class="px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition">Agendar Consulta</a>
           <a href="#sobre" class="px-6 py-3 border border-gray-300 rounded-md hover:bg-gray-100 transition">Ver Curriculum</a>
@@ -51,7 +59,7 @@
       </div>
       <!-- Foto -->
       <div class="flex-1" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;animation-delay:.3s">
-        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=900&q=80" alt="Foto do Dr. João da Silva" class="w-full rounded-lg shadow-lg">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=900&q=80" alt="Foto do Dr. João da Silva" class="hero-image w-full rounded-lg shadow-lg">
       </div>
     </div>
   </section>
@@ -61,7 +69,9 @@
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
         <h3 class="text-3xl font-semibold tracking-tight mb-4">Formação & Princípios</h3>
-        <p class="text-gray-600 mb-6">Graduado pela Universidade de Brasília e com residência em Cirurgia Geral pelo Hospital Sírio-Libanês, Dr. João soma milhares de procedimentos realizados com foco na segurança e bem-estar do paciente.</p>
+        <div class="doctor-bio text-gray-600 mb-6">
+          <p>Graduado pela Universidade de Brasília e com residência em Cirurgia Geral pelo Hospital Sírio-Libanês, Dr. João soma milhares de procedimentos realizados com foco na segurança e bem-estar do paciente.</p>
+        </div>
         <ul class="space-y-3">
           <li class="flex items-center gap-2">
             <i data-lucide="check-circle" class="text-emerald-600"></i>
@@ -78,7 +88,7 @@
         </ul>
       </div>
       <div class="relative" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;animation-delay:.2s">
-        <img src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&q=80" alt="Equipe médica" class="w-full rounded-lg shadow-lg">
+        <img src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&q=80" alt="Equipe médica" class="doctor-photo w-full rounded-lg shadow-lg">
         <span class="absolute -top-4 -left-4 w-16 h-16 bg-emerald-600/20 rounded-full blur-2xl"></span>
       </div>
     </div>
@@ -88,7 +98,7 @@
   <section id="procedimentos" class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <h3 class="text-3xl font-semibold tracking-tight text-center mb-12">Principais Procedimentos</h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="procedures-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card -->
         <div class="bg-gray-50 rounded-lg p-6 border hover:shadow-lg transition" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
           <i data-lucide="scalpel" class="text-emerald-600 mb-4"></i>
@@ -119,11 +129,11 @@
         <p class="text-gray-600 mb-6">Acompanhe a evolução do número de cirurgias realizadas nos últimos anos, fruto de dedicação à excelência e à confiança de pacientes de todo o país.</p>
         <div class="flex gap-8">
           <div>
-            <p class="text-4xl font-semibold text-emerald-600">98%</p>
+            <p class="satisfaction-stat text-4xl font-semibold text-emerald-600">98%</p>
             <span class="text-gray-600 text-sm">Satisfação</span>
           </div>
           <div>
-            <p class="text-4xl font-semibold text-emerald-600">+10k</p>
+            <p class="procedures-stat text-4xl font-semibold text-emerald-600">+10k</p>
             <span class="text-gray-600 text-sm">Procedimentos</span>
           </div>
         </div>
@@ -140,7 +150,7 @@
   <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <h3 class="text-3xl font-semibold tracking-tight text-center mb-12">Depoimentos</h3>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="testimonials-grid grid md:grid-cols-3 gap-8">
         <blockquote class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
           <p class="text-gray-600 mb-4">"Equipe impecável! Minha recuperação foi surpreendentemente rápida e tranquila."</p>
           <div class="flex items-center gap-3">
@@ -170,19 +180,19 @@
   <section id="contato" class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <!-- Form -->
-      <form class="bg-white p-8 rounded-lg border shadow-sm space-y-6" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
+      <form id="contactForm" class="bg-white p-8 rounded-lg border shadow-sm space-y-6" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
         <h3 class="text-2xl font-semibold tracking-tight mb-2">Agende sua consulta</h3>
         <div>
           <label class="block text-sm mb-1">Nome</label>
-          <input type="text" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Seu nome">
+          <input type="text" name="name" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Seu nome">
         </div>
         <div>
           <label class="block text-sm mb-1">E-mail</label>
-          <input type="email" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="voce@email.com">
+          <input type="email" name="email" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="voce@email.com">
         </div>
         <div>
           <label class="block text-sm mb-1">Mensagem</label>
-          <textarea rows="4" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Como podemos ajudar?"></textarea>
+          <textarea name="message" rows="4" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Como podemos ajudar?"></textarea>
         </div>
         <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition flex justify-center gap-2">
           <i data-lucide="send"></i> Enviar
@@ -194,15 +204,15 @@
         <div class="space-y-3">
           <div class="flex items-center gap-3">
             <i data-lucide="map-pin" class="text-emerald-600"></i>
-            <span>SHLS 716, Brasília – DF</span>
+            <span class="contact-address">SHLS 716, Brasília – DF</span>
           </div>
           <div class="flex items-center gap-3">
             <i data-lucide="phone" class="text-emerald-600"></i>
-            <span>(61) 4000-1234</span>
+            <span class="contact-phone">(61) 4000-1234</span>
           </div>
           <div class="flex items-center gap-3">
             <i data-lucide="mail" class="text-emerald-600"></i>
-            <span>contato@drjoaosilva.com</span>
+            <span class="contact-email">contato@drjoaosilva.com</span>
           </div>
         </div>
       </div>
@@ -221,6 +231,6 @@
     </div>
   </footer>
 
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="/wordpress-main.js"></script>
 </body>
 </html>
