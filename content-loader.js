@@ -5,6 +5,7 @@ class ContentLoader {
   constructor() {
     this.isLoading = false;
     this.siteSettings = null;
+    this.loadingTexts = null;
   }
 
   // Mostrar/esconder loading
@@ -15,6 +16,22 @@ class ContentLoader {
     }
   }
 
+  // Carregar textos de loading
+  async loadLoadingTexts() {
+    try {
+      this.loadingTexts = await wpAPI.getPage(WORDPRESS_CONFIG.pageIds.loading);
+      if (this.loadingTexts) {
+        // Atualizar texto de loading
+        const loadingText = document.querySelector('.loading-text');
+        if (loadingText && this.loadingTexts.acf?.loading_text) {
+          loadingText.textContent = this.loadingTexts.acf.loading_text;
+        }
+      }
+    } catch (error) {
+      console.error('Erro ao carregar textos de loading:', error);
+    }
+  }
+
   // Carregar configurações gerais do site
   async loadSiteSettings() {
     try {
@@ -22,12 +39,25 @@ class ContentLoader {
       if (this.siteSettings) {
         // Atualizar título do site
         const siteTitle = this.siteSettings.acf?.site_title || 'Dr. João da Silva';
-        document.title = `${siteTitle} – ${this.siteSettings.acf?.site_subtitle || 'Cirurgião Geral em Brasília'}`;
+        const siteSubtitle = this.siteSettings.acf?.site_subtitle || 'Cirurgião Geral em Brasília';
+        const titleSeparator = this.siteSettings.acf?.title_separator || '–';
+        document.title = `${siteTitle} ${titleSeparator} ${siteSubtitle}`;
         
         // Atualizar nome do médico no header
         const doctorNameHeader = document.querySelector('.doctor-name');
         if (doctorNameHeader) {
           doctorNameHeader.textContent = siteTitle;
+        }
+
+        // Atualizar meta description
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.name = 'description';
+          document.head.appendChild(metaDescription);
+        }
+        if (this.siteSettings.acf?.meta_description) {
+          metaDescription.content = this.siteSettings.acf.meta_description;
         }
       }
     } catch (error) {
@@ -129,6 +159,11 @@ class ContentLoader {
         if (proceduresTitle && proceduresData.acf?.procedures_title) {
           proceduresTitle.textContent = proceduresData.acf.procedures_title;
         }
+
+        const proceduresSubtitle = document.querySelector('.procedures-subtitle');
+        if (proceduresSubtitle && proceduresData.acf?.procedures_subtitle) {
+          proceduresSubtitle.textContent = proceduresData.acf.procedures_subtitle;
+        }
       }
 
       const procedures = await wpAPI.getProcedures();
@@ -176,6 +211,11 @@ class ContentLoader {
         const testimonialsTitle = document.querySelector('.testimonials-title');
         if (testimonialsTitle && testimonialsData.acf?.testimonials_title) {
           testimonialsTitle.textContent = testimonialsData.acf.testimonials_title;
+        }
+
+        const testimonialsSubtitle = document.querySelector('.testimonials-subtitle');
+        if (testimonialsSubtitle && testimonialsData.acf?.testimonials_subtitle) {
+          testimonialsSubtitle.textContent = testimonialsData.acf.testimonials_subtitle;
         }
       }
 
@@ -275,6 +315,7 @@ class ContentLoader {
       if (chart) {
         chart.data.labels = chartData.labels || ['2019', '2020', '2021', '2022', '2023'];
         chart.data.datasets[0].data = chartData.data || [1800, 1900, 2100, 2400, 2600];
+        chart.data.datasets[0].label = chartData.label || 'Cirurgias';
         chart.update();
       }
     }
@@ -289,6 +330,12 @@ class ContentLoader {
         const contactTitle = document.querySelector('.contact-title');
         if (contactTitle && contactData.acf?.contact_title) {
           contactTitle.textContent = contactData.acf.contact_title;
+        }
+
+        // Atualizar subtítulo do formulário
+        const contactSubtitle = document.querySelector('.contact-subtitle');
+        if (contactSubtitle && contactData.acf?.contact_subtitle) {
+          contactSubtitle.textContent = contactData.acf.contact_subtitle;
         }
 
         // Atualizar labels do formulário
@@ -329,6 +376,28 @@ class ContentLoader {
           submitBtn.innerHTML = `<i data-lucide="send"></i> ${contactData.acf.submit_btn_text}`;
         }
 
+        // Atualizar títulos das seções de contato
+        const contactInfoTitle = document.querySelector('.contact-info-title');
+        if (contactInfoTitle && contactData.acf?.contact_info_title) {
+          contactInfoTitle.textContent = contactData.acf.contact_info_title;
+        }
+
+        // Atualizar labels dos dados de contato
+        const addressLabel = document.querySelector('.address-label');
+        if (addressLabel && contactData.acf?.address_label) {
+          addressLabel.textContent = contactData.acf.address_label;
+        }
+
+        const phoneLabel = document.querySelector('.phone-label');
+        if (phoneLabel && contactData.acf?.phone_label) {
+          phoneLabel.textContent = contactData.acf.phone_label;
+        }
+
+        const emailContactLabel = document.querySelector('.email-contact-label');
+        if (emailContactLabel && contactData.acf?.email_contact_label) {
+          emailContactLabel.textContent = contactData.acf.email_contact_label;
+        }
+
         // Atualizar endereço
         const address = document.querySelector('.contact-address');
         if (address && contactData.acf?.address) {
@@ -346,6 +415,22 @@ class ContentLoader {
         if (email && contactData.acf?.email) {
           email.textContent = contactData.acf.email;
         }
+
+        // Atualizar horários de funcionamento
+        const scheduleTitle = document.querySelector('.schedule-title');
+        if (scheduleTitle && contactData.acf?.schedule_title) {
+          scheduleTitle.textContent = contactData.acf.schedule_title;
+        }
+
+        const scheduleWeekdays = document.querySelector('.schedule-weekdays');
+        if (scheduleWeekdays && contactData.acf?.schedule_weekdays) {
+          scheduleWeekdays.textContent = contactData.acf.schedule_weekdays;
+        }
+
+        const scheduleWeekend = document.querySelector('.schedule-weekend');
+        if (scheduleWeekend && contactData.acf?.schedule_weekend) {
+          scheduleWeekend.textContent = contactData.acf.schedule_weekend;
+        }
       }
     } catch (error) {
       console.error('Erro ao carregar informações de contato:', error);
@@ -361,6 +446,44 @@ class ContentLoader {
         if (copyright && this.siteSettings.acf?.copyright_text) {
           const year = new Date().getFullYear();
           copyright.innerHTML = this.siteSettings.acf.copyright_text.replace('{year}', year);
+        }
+
+        // Atualizar texto das redes sociais
+        const socialTitle = document.querySelector('.social-title');
+        if (socialTitle && this.siteSettings.acf?.social_title) {
+          socialTitle.textContent = this.siteSettings.acf.social_title;
+        }
+
+        // Atualizar links das redes sociais
+        const instagramLink = document.querySelector('.instagram-link');
+        if (instagramLink && this.siteSettings.acf?.instagram_url) {
+          instagramLink.href = this.siteSettings.acf.instagram_url;
+        }
+
+        const linkedinLink = document.querySelector('.linkedin-link');
+        if (linkedinLink && this.siteSettings.acf?.linkedin_url) {
+          linkedinLink.href = this.siteSettings.acf.linkedin_url;
+        }
+
+        const youtubeLink = document.querySelector('.youtube-link');
+        if (youtubeLink && this.siteSettings.acf?.youtube_url) {
+          youtubeLink.href = this.siteSettings.acf.youtube_url;
+        }
+
+        // Atualizar textos de acessibilidade das redes sociais
+        const instagramIcon = document.querySelector('.instagram-link i');
+        if (instagramIcon && this.siteSettings.acf?.instagram_alt) {
+          instagramIcon.setAttribute('aria-label', this.siteSettings.acf.instagram_alt);
+        }
+
+        const linkedinIcon = document.querySelector('.linkedin-link i');
+        if (linkedinIcon && this.siteSettings.acf?.linkedin_alt) {
+          linkedinIcon.setAttribute('aria-label', this.siteSettings.acf.linkedin_alt);
+        }
+
+        const youtubeIcon = document.querySelector('.youtube-link i');
+        if (youtubeIcon && this.siteSettings.acf?.youtube_alt) {
+          youtubeIcon.setAttribute('aria-label', this.siteSettings.acf.youtube_alt);
         }
       }
     } catch (error) {
@@ -387,9 +510,32 @@ class ContentLoader {
             element.textContent = this.siteSettings.acf[acfField];
           }
         });
+
+        // Atualizar texto do botão mobile menu
+        const menuBtnText = document.querySelector('.menu-btn-text');
+        if (menuBtnText && this.siteSettings.acf?.menu_btn_text) {
+          menuBtnText.textContent = this.siteSettings.acf.menu_btn_text;
+        }
       }
     } catch (error) {
       console.error('Erro ao carregar conteúdo da navegação:', error);
+    }
+  }
+
+  // Carregar mensagens de erro e sucesso
+  async loadFormMessages() {
+    try {
+      const contactData = await wpAPI.getPage(WORDPRESS_CONFIG.pageIds.contact);
+      if (contactData) {
+        // Armazenar mensagens para uso posterior
+        this.formMessages = {
+          success: contactData.acf?.success_message || 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+          error: contactData.acf?.error_message || 'Erro ao enviar mensagem. Tente novamente.',
+          sending: contactData.acf?.sending_message || 'Enviando...'
+        };
+      }
+    } catch (error) {
+      console.error('Erro ao carregar mensagens do formulário:', error);
     }
   }
 
@@ -399,6 +545,7 @@ class ContentLoader {
     
     try {
       await Promise.all([
+        this.loadLoadingTexts(),
         this.loadSiteSettings(),
         this.loadHomeContent(),
         this.loadDoctorInfo(),
@@ -407,7 +554,8 @@ class ContentLoader {
         this.loadStatistics(),
         this.loadContactInfo(),
         this.loadFooterContent(),
-        this.loadNavigationContent()
+        this.loadNavigationContent(),
+        this.loadFormMessages()
       ]);
     } catch (error) {
       console.error('Erro ao carregar conteúdo:', error);

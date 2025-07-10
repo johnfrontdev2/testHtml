@@ -15,7 +15,7 @@
   <div id="loading" class="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50">
     <div class="text-center">
       <i data-lucide="loader-2" class="w-8 h-8 text-emerald-600 animate-spin mx-auto mb-2"></i>
-      <p class="text-gray-600">Carregando conteúdo...</p>
+      <p class="loading-text text-gray-600">Carregando conteúdo...</p>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
         <i data-lucide="calendar"></i> <span>Consulta</span>
       </a>
       <button class="md:hidden" id="menuBtn" style="opacity:0;animation:fadeIn 0.8s ease-out forwards;animation-delay:.3s">
-        <i data-lucide="menu"></i>
+        <i data-lucide="menu"></i> <span class="menu-btn-text sr-only">Menu</span>
       </button>
     </div>
     <!-- Mobile -->
@@ -98,6 +98,7 @@
   <section id="procedimentos" class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <h3 class="procedures-title text-3xl font-semibold tracking-tight text-center mb-12">Principais Procedimentos</h3>
+      <p class="procedures-subtitle text-gray-600 text-center mb-12 max-w-2xl mx-auto">Oferecemos uma ampla gama de procedimentos cirúrgicos com tecnologia de ponta e técnicas minimamente invasivas.</p>
       <div class="procedures-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card -->
         <div class="bg-gray-50 rounded-lg p-6 border hover:shadow-lg transition" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
@@ -150,6 +151,7 @@
   <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <h3 class="testimonials-title text-3xl font-semibold tracking-tight text-center mb-12">Depoimentos</h3>
+      <p class="testimonials-subtitle text-gray-600 text-center mb-12 max-w-2xl mx-auto">Veja o que nossos pacientes dizem sobre a experiência e os resultados obtidos.</p>
       <div class="testimonials-grid grid md:grid-cols-3 gap-8">
         <blockquote class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
           <p class="text-gray-600 mb-4">"Equipe impecável! Minha recuperação foi surpreendentemente rápida e tranquila."</p>
@@ -182,6 +184,7 @@
       <!-- Form -->
       <form id="contactForm" class="bg-white p-8 rounded-lg border shadow-sm space-y-6" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;">
         <h3 class="contact-title text-2xl font-semibold tracking-tight mb-2">Agende sua consulta</h3>
+        <p class="contact-subtitle text-gray-600 mb-6">Preencha o formulário abaixo e entraremos em contato para agendar sua consulta.</p>
         <div>
           <label class="name-label block text-sm mb-1">Nome</label>
           <input type="text" name="name" required class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-emerald-600 outline-none" placeholder="Seu nome">
@@ -198,21 +201,40 @@
           <i data-lucide="send"></i> Enviar
         </button>
       </form>
-      <!-- Mapa / Info -->
+      <!-- Info de Contato -->
       <div class="space-y-6" style="opacity:0;animation:fadeInUp 0.8s ease-out forwards;animation-delay:.2s">
+        <h4 class="contact-info-title text-xl font-semibold mb-4">Informações de Contato</h4>
         <iframe class="w-full h-64 rounded-lg border" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.604455836737!2d-47.88231778514073!3d-15.793627789060484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3a0801044e17%3A0x22af07fa0fc7cc33!2sBras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1613156290580!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
         <div class="space-y-3">
           <div class="flex items-center gap-3">
             <i data-lucide="map-pin" class="text-emerald-600"></i>
-            <span class="contact-address">SHLS 716, Brasília – DF</span>
+            <div>
+              <span class="address-label text-sm text-gray-500 block">Endereço:</span>
+              <span class="contact-address">SHLS 716, Brasília – DF</span>
+            </div>
           </div>
           <div class="flex items-center gap-3">
             <i data-lucide="phone" class="text-emerald-600"></i>
-            <span class="contact-phone">(61) 4000-1234</span>
+            <div>
+              <span class="phone-label text-sm text-gray-500 block">Telefone:</span>
+              <span class="contact-phone">(61) 4000-1234</span>
+            </div>
           </div>
           <div class="flex items-center gap-3">
             <i data-lucide="mail" class="text-emerald-600"></i>
-            <span class="contact-email">contato@drjoaosilva.com</span>
+            <div>
+              <span class="email-contact-label text-sm text-gray-500 block">E-mail:</span>
+              <span class="contact-email">contato@drjoaosilva.com</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Horários de Funcionamento -->
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h5 class="schedule-title font-semibold mb-2">Horários de Atendimento</h5>
+          <div class="space-y-1 text-sm text-gray-600">
+            <div class="schedule-weekdays">Segunda a Sexta: 8h às 18h</div>
+            <div class="schedule-weekend">Sábados: 8h às 12h</div>
           </div>
         </div>
       </div>
@@ -224,9 +246,10 @@
     <div class="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="copyright-text text-sm text-gray-600">© <span id="year"></span> Dr. João da Silva – Todos os direitos reservados.</p>
       <div class="flex gap-4 text-gray-500">
-        <a href="#" class="hover:text-emerald-600 transition"><i data-lucide="instagram"></i></a>
-        <a href="#" class="hover:text-emerald-600 transition"><i data-lucide="linkedin"></i></a>
-        <a href="#" class="hover:text-emerald-600 transition"><i data-lucide="youtube"></i></a>
+        <span class="social-title text-sm text-gray-600 mr-2">Siga-nos:</span>
+        <a href="#" class="instagram-link hover:text-emerald-600 transition"><i data-lucide="instagram" aria-label="Instagram"></i></a>
+        <a href="#" class="linkedin-link hover:text-emerald-600 transition"><i data-lucide="linkedin" aria-label="LinkedIn"></i></a>
+        <a href="#" class="youtube-link hover:text-emerald-600 transition"><i data-lucide="youtube" aria-label="YouTube"></i></a>
       </div>
     </div>
   </footer>

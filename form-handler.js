@@ -1,4 +1,5 @@
 import { wpAPI } from './api.js';
+import { contentLoader } from './content-loader.js';
 
 class FormHandler {
   constructor() {
@@ -20,8 +21,10 @@ class FormHandler {
     const submitButton = form.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
     
+    // Usar mensagem dinâmica de "enviando"
+    const sendingMessage = contentLoader.formMessages?.sending || 'Enviando...';
     // Mostrar loading no botão
-    submitButton.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Enviando...';
+    submitButton.innerHTML = `<i data-lucide="loader-2" class="animate-spin"></i> ${sendingMessage}`;
     submitButton.disabled = true;
     
     try {
@@ -35,14 +38,17 @@ class FormHandler {
       const response = await wpAPI.submitContactForm(data);
       
       if (response.status === 'mail_sent') {
-        this.showMessage('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+        const successMessage = contentLoader.formMessages?.success || 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+        this.showMessage(successMessage, 'success');
         form.reset();
       } else {
-        this.showMessage('Erro ao enviar mensagem. Tente novamente.', 'error');
+        const errorMessage = contentLoader.formMessages?.error || 'Erro ao enviar mensagem. Tente novamente.';
+        this.showMessage(errorMessage, 'error');
       }
     } catch (error) {
       console.error('Erro ao enviar formulário:', error);
-      this.showMessage('Erro ao enviar mensagem. Tente novamente.', 'error');
+      const errorMessage = contentLoader.formMessages?.error || 'Erro ao enviar mensagem. Tente novamente.';
+      this.showMessage(errorMessage, 'error');
     } finally {
       // Restaurar botão
       submitButton.innerHTML = originalText;

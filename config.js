@@ -22,7 +22,8 @@ export const WORDPRESS_CONFIG = {
     procedures: 3,  // ID da página "Procedimentos"
     contact: 4,     // ID da página "Contato"
     testimonials: 5, // ID da página "Depoimentos"
-    settings: 6     // ID da página "Configurações Gerais"
+    settings: 6,    // ID da página "Configurações Gerais"
+    loading: 7      // ID da página "Textos de Loading"
   },
   
   // Configurações de cache
